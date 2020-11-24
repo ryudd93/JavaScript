@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <button type="button" onclick="naver()">네이버로 이동</button>
+    <button type="button" onclick="google()">구글로 이동</button>
+
+    <script>
+        function naver(){
+            var answer = confirm("네이버로 이동하시겠습니까?");
+            console.log(answer);
+            if (answer === true) {
+                location.href='http://www.naver.com';
+            }
+        };
+
+        function google(){
+            var answer = confirm("구글로 이동하시겠습니까?");
+            console.log(answer);
+            if (answer === true) {
+                location.href='http://www.google.com';
+            }
+        };
+
+    </script>
+</body>
+</html>

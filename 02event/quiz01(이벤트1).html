@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 1. checkbox버튼을 클릭했을때, '1번 조항에 동의했습니다.'문구를 띄우고 value값을 확ㅇㄴ -->
+    <input type="checkbox" value="1" onclick="check1(this)">조항1
+    <input type="checkbox" value="2" onclick="check1(this)">조항2
+    <input type="checkbox" value="3" onclick="check1(this)">조항3
+    <input type="checkbox" value="4" onclick="check1(this)">조항4
+    <script>
+        function check1(i) {
+            console.log(i.value);
+            alert(i.value + "번 조항에 동의하였습니다");
+        }
+    </script>
+
+    <hr/>
+
+    <!-- 2. 기억하기 버튼을 클릭했을때 input태그의 공백 여부, 체크박스 여부 확인 -->
+    ID : <input type="text" id="id">
+    <input type="checkbox" id="remember" checked>기억하기
+    <button type="button" id="btn" onclick="check2(this)">확인</button>
+
+
+    <script>
+        var id = document.getElementById("id");
+        var remember = document.getElementById("remember");
+        var btn = document.getElementById("btn");
+
+        console.log(id);
+        console.log(remember);
+        console.log(btn);
+
+        btn.onclick = function() {
+            // checkbox에 체크여부는 checked
+            console.log("value값 : " + id.value);
+            console.log("체크여부 : " + remember.checked);
+            console.log(this);
+        };
+
+        (function(as) {
+            console.log(this)
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 태그에 직접 이벤트를 붙이는 형태가 인라인 이벤트이고, 이벤트 안에는 순수한 JS코드가 작성됨 -->
+    <!-- javascript:은 생략이 가능함 -->
+    <!-- 어떤 버튼을 클릭했는지 확인할 때, 사용할 수 있는 키워드가 this -->
+    <button type="button" onclick="check()">인라인 이벤트</button>
+    <button type="button" onclick="javascript:alert('헐!')">인라인 이벤트</button>
+
+    <hr/>
+
+    <!-- 여러 태그에 동일한 인라인 이벤트 경우 -->
+    <button type="button" onclick="check2(this)" id="1">a</button>
+    <button type="button" onclick="check2(this)" id="2">b</button>
+    <button type="button" onclick="check2(this)" id="3">c</button>
+    <button type="button" onclick="check2(this)" id="4">d</button>
+    <button type="button" onclick="check2(this)" id="5">e</button>
+
+    <script>
+        function check() {
+            alert('하이하이');
+        }
+
+        function check2(a) {
+            // console.log("실행됨")
+            // this 키워드는 실행 문맥의 자신을 가르키며 .을 찍어서 태그에 속성들에 접근이 가능함
+            console.log(a);
+            console.log(a.type);
+            console.log(a.onclick);
+            console.log(a.id);
+            
+            console.log(a.innerHTML);   // 선택된 태그의 text요소를 가르킴
+            // a.innerHTML = "Hello World";
+            a.innerHTML = a.id;
+            
+        }
+    </script>
+</body>
+</html>
