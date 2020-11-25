@@ -8,22 +8,25 @@
 <body>
     <!-- 인라인 이벤트를 써서 하나의 함수에서 처리. (this, value, innerHTML)을 적절하게 이용 -->
     <h2>자바스크립트 카운트</h2>
-    <input type="text" id="count" value="0"><button type="button" onclick="calc(this)">+</button><button type="button" onclick="calc(this)">-</button>
+    <input type="text" id="result" value="0">
+    <button type="button" onclick="calc(this)">+</button>
+    <button type="button" onclick="calc(this)">-</button>
 
     <script>
-        var count = document.getElementById("count");
-        var i = 0;
+        function calc(oper) {
+            var result = document.getElementById("result");
+            console.log(oper);
 
-        calc.onclick() {
-            
-        }
+            if(oper.innerHTML === "+") {
+                result.value++;
+            } else {
+                if(result.value <= 0) {
+                    alert("0보다 작을 수 없습니다.");
+                    return;
+                }
+                result.value--;
+            }
 
-        
-
-        if (i >= 0) {
-            
-        } else {
-            alert("0보다 작을 수 없습니다.");
         }
     </script>
 </body>

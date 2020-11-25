@@ -26,6 +26,22 @@
 
             }
 
+
+            // querySelectorAll확인
+            var btn2 = document.getElementById("btn2");
+            btn2.onclick = function() {
+                var list = document.querySelectorAll(".box2 li");
+                // console.log(list);
+                // list[0].innerHTML = "흠";
+                // list[1].innerHTML = "흠";
+                // list[2].innerHTML = "흠";
+
+                for(var i = 0; i < list.length; i++) {
+                    list[i].innerHTML = "흠";
+                    list[i].style.color = "red";
+                }
+            }
+
          }
      </script>
 
@@ -35,6 +51,16 @@
              <li>안녕</li>
              <li>Hello</li>
              <li>Nihao</li>
+         </ul>
+     </div>
+
+
+     <button type="button" id="btn2">querySlectorAll확인</button>
+     <div>
+         <ul class="box2">
+             <li>홍길동</li>
+             <li>홍길자</li>
+             <li>이순신</li>
          </ul>
      </div>
 

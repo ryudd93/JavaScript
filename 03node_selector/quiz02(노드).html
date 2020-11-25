@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 아이디나 비밀번호가 변경될때, 예제처럼 처리되도록 구현 -->
+    <div>
+        <form>
+            아이디 : <input type="text" name="id"><br/>
+            <span class="idMsg"></span><br>
+            비밀번호 : <input type="password" name="pw"><br/>
+            <span class="pwMsg"></span>
+            
+        </form>
+    </div>
+
+    <script>
+        var id = document.querySelector("input[name='id']");
+        var pw = document.querySelector("input[name='pw']");
+        
+        id.addEventListener("keyup", function() {
+            // console.log(id.value);
+            if(id.value.length < 4) {
+                id.style.borderColor = "red";
+                // var idMsg = document.querySelector(".idMsg");
+                // idMsg.innerHTML = "4글자 이상";
+                document.querySelector(".idMsg").innerHTML = "4글자이상";
+            } else {
+                id.style.borderColor = "green";
+                document.querySelector(".idMsg").innerHTML = "";
+            }
+        });
+
+        pw.addEventListener("keyup", function() {
+            if(pw.value.length < 9) {
+                pw.style.borderColor = "red";
+                document.querySelector(".pwMsg").innerHTML = "9글자이상";
+            } else {
+                pw.style.borderColor = "green";
+                document.querySelector(".pwMsg").innerHTML = "";
+            }
+        });
+    </script>
+    
+</body>
+</html>
