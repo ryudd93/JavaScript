@@ -42,11 +42,11 @@
     <header>
         <div class="center">
             <h2>style속성 활용하기</h2>
-            <button type="button" id="dark">어둡게</button>
-            <button type="button" id="bright">밝게</button>
+            <button type="button" class="dark">어둡게보기</button>
         </div>
-    </header>
 
+    </header>
+   
     <hr/>
 
     <section>
@@ -66,26 +66,26 @@
     </section>
 
     <script>
-        var dark = document.getElementById("dark");
-        var bright = document.getElementById("bright");
+        // var center = document.querySelector(".center");
 
+        var dark = document.querySelector(".dark");
         dark.onclick = function() {
-            var all = document.querySelector("body");
-            all.style.backgroundColor = "black";
-            
+            document.body.style.backgroundColor = "black";
             var tag = document.querySelectorAll("h2, p, a");
             tag[0].style.color = "white";
             tag[1].style.color = "white";
             tag[2].style.color = "white";
+            dark.innerHTML = "<button type='button' class='bright'>밝게보기</button>";
         }
 
+        var bright = document.querySelector(".bright");
         bright.onclick = function() {
-            // document.body;    //body는 document의 자식
             document.body.style.backgroundColor = "white";
             var tag = document.querySelectorAll("h2, p, a");
             tag[0].style.color = "black";
             tag[1].style.color = "black";
             tag[2].style.color = "black";
+            bright.innerHTML = "<button type='button' class='dark'>어둡게보기</button>";
         }
     </script>
 </body>

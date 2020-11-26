@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        table {border-spacing: 0; border-collapse: collapse;}
+        th, td {border: 1px solid black;}
+
+    </style>
+</head>
+<body>
+
+    <table>
+        <thead>
+            <th>이동</th>
+            <th>번호</th>
+            <th>이름</th>
+            <th>내용</th>
+            <th>날짜</th>
+        </thead>
+        <tbody class="table" style="text-align: center;">
+            <tr>
+                <td><button type="button" onclick="down(this)">↓</button><button type="button" onclick="up(this)">↑</button></td>
+                <td>1</td>
+                <td>이병헌</td>
+                <td>Hello World</td>
+                <td>1993-06-10</td>
+            </tr>
+            <tr>
+                <td><button type="button" onclick="down(this)">↓</button><button type="button" onclick="up(this)">↑</button></td>
+                <td>2</td>
+                <td>류연지</td>
+                <td>Hello World</td>
+                <td>1993-06-30</td>
+            <tr>
+                <td><button type="button" onclick="down(this)">↓</button><button type="button" onclick="up(this)">↑</button></td>
+                <td>3</td>
+                <td>이울연</td>
+                <td>Hello World</td>
+                <td>2024-03-03</td>
+            </tr>
+            <tr>
+                <td><button type="button" onclick="down(this)">↓</button><button type="button" onclick="up(this)">↑</button></td>
+                <td>4</td>
+                <td>이울헌</td>
+                <td>Hello World</td>
+                <td>2025-04-04</td>
+            </tr>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function down(node) {
+
+            // 부모, 이웃노드를 선택하는 방법이 2가지씩 있는데,
+            // 이름에 Element가 포함된 속성은 text나 공백을 제외하고 선택을 함
+            // 그래서 Element 이름이 붙어있는 속성을 사용해주면 됨
+
+            // console.dir(node);
+            // console.log(node.parentElement);
+            // console.log(node.parentNode);
+            
+            // console.log(node.nextElementSibling);
+            // console.log(node.nextSibling);
+
+            // console.log(node.previousElementSibling);
+            // console.log(node.previousSibling);
+
+            // console.log(node.firstChild);
+            // console.log(node.firstElementChild);
+
+            var table = document.querySelector(".table");
+            var current = node.parentElement.parentElement;  //tr - 기준 노드
+            var next = current.nextElementSibling;  //tr - 다음행
+            // console.log(current, next);
+
+            if (next === null ){
+                alert("다음 행이 없습니다.");
+                return;
+            } else {
+                table.insertBefore(next, current);  // (옮길 노드, 기준 노드) - 기준 노드 앞에 옮길 노드를 추가
+            }
+
+        }
+
+
+        function up(node) {
+            var table = document.querySelector(".table");
+            var current = node.parentElement.parentElement;
+            var pre = current.previousElementSibling;
+
+            console.log(current, pre);
+
+            if (pre === null ){
+                alert("이전 행이 없습니다.");
+                return;
+            } else {
+                table.insertBefore(current, pre);
+            }
+        }
+    </script>
+
+    
+</body>
+</html>
