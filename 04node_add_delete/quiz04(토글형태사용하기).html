@@ -42,7 +42,9 @@
     <header>
         <div class="center">
             <h2>style속성 활용하기</h2>
-            <button type="button" class="dark">어둡게보기</button>
+            <button type="button" id="btn1" class="dark">어둡게보기</button>
+            <button type="button" id="btn2" class="name">이름보기</button>
+            <button type="button" id="btn3" class="write">메모장모드</button>
         </div>
 
     </header>
@@ -66,26 +68,86 @@
     </section>
 
     <script>
-        // var center = document.querySelector(".center");
+        // body, p, h2를 얻어서 가져오기
+        var all = document.querySelector("body");
+        var tag = document.querySelectorAll("h2, p, a");
 
-        var dark = document.querySelector(".dark");
-        dark.onclick = function() {
-            document.body.style.backgroundColor = "black";
-            var tag = document.querySelectorAll("h2, p, a");
-            tag[0].style.color = "white";
-            tag[1].style.color = "white";
-            tag[2].style.color = "white";
-            dark.innerHTML = "<button type='button' class='bright'>밝게보기</button>";
+        var btn1 = document.getElementById("btn1");
+        btn1.onclick = function() {
+
+            if(btn1.className === 'dark') {
+                all.style.backgroundColor = "black";
+                for (var i = 0; i < tag.length; i++) {
+                    tag[i].style.color = "white";
+                }
+                btn1.innerHTML = "밝게보기";
+                btn1.className = "white";
+
+            } else {
+                all.style.backgroundColor = "white";
+                for (var i = 0; i < tag.length; i++) {
+                    tag[i].style.color = "black";
+                }
+                btn1.innerHTML = "어둡게보기";
+                btn1.className = "dark";
+            }
         }
 
-        var bright = document.querySelector(".bright");
-        bright.onclick = function() {
-            document.body.style.backgroundColor = "white";
-            var tag = document.querySelectorAll("h2, p, a");
-            tag[0].style.color = "black";
-            tag[1].style.color = "black";
-            tag[2].style.color = "black";
-            bright.innerHTML = "<button type='button' class='dark'>어둡게보기</button>";
+
+        // p태그 안에 내용을 바꾸고, a는 display처리 방식
+        var p = document.querySelector(".right > .inner > p");
+        var a = document.querySelector(".right > .inner > a");
+        var btn2 = document.getElementById("btn2");
+        btn2.onclick = function() {
+            if (btn2.className === 'name') {
+                p.innerHTML = "홍길자<br/>20세<br/>능력단위<br/>Java, Oracle, JSP, CSS, Javascript";
+                a.style.display = "none";
+                btn2.innerHTML = "내용보기";
+                btn2.className = "cont";
+            } else {
+                p.innerHTML = "자바스크립트(영어: JavaScript)는 객체 기반의 스크립트 프로그래밍 언어이다. 이 언어는 웹 브라우저 내에서 주로 사용하며, 다른 응용 프로그램의 내장 객체에도 접근할 수 있는 기능을 가지고 있다. 또한 Node.js와 같은 런타임 환경과 같이 서버 프로그래밍에도 사용되고 있다.";
+                a.style.display = "block";
+                btn2.innerHTML = "이름보기";
+                btn2.className = "name";
+            }
+        }
+
+        var inner = document.querySelector(".left > .inner");
+        var btn3 = document.getElementById("btn3");
+        btn3.onclick = function() {
+
+            // 박스 안 요소들은 전부 다 삭제
+            for (var i = 0; i < inner.children.length;) {
+                inner.removeChild(inner.children[i]);
+            }
+
+            if(btn3.className === 'write') {
+                var textarea = document.createElement("textarea");
+
+                textarea.style.height = "100px";
+                textarea.style.width = "100%";
+                textarea.style.resize = "vertical";
+                textarea.style.boxSizing = "border-box";
+
+                var button = document.createElement("button");
+                button.innerHTML = "등록하기";
+
+                inner.appendChild(textarea);
+                inner.appendChild(button);
+
+                btn3.innerHTML = "사진모드";
+                btn3.className = "picture";
+
+                console.log(textarea, button);
+            } else {
+                var img = document.createElement("img");
+                img.src = "img/1.jpg";
+                inner.appendChild(img);
+
+                btn3.innerHTML = "메모장모드";
+                btn3.className = "write";
+
+            }
         }
     </script>
 </body>

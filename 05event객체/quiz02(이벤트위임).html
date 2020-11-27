@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-spacing: 0;    /* 윤곽 간격 */
+            border-collapse: collapse;    
+        }
+        thead th
+        , tbody td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>이벤트 속성을 이용해서 다음을 만들어 보세요</h2>
+
+    <table>
+        <thead>
+            <th>번호</th>
+            <th>제목</th>
+            <th>내용</th>
+            <th>삭제</th>
+        </thead>
+        <tbody class="table">
+            <tr>
+                <td>1</td>
+                <td>첫글</td>
+                <td>hi</td>
+                <td><button type="button" class="remove">삭제</button></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>첫글</td>
+                <td>hi</td>
+                <td><button type="button" class="remove">삭제</button></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>첫글</td>
+                <td>hi</td>
+                <td><button type="button" class="remove">삭제</button></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>첫글</td>
+                <td>hi</td>
+                <td><button type="button" class="remove">삭제</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        // 1번째 방식
+        // var list = document.querySelectorAll(".remove");
+
+        // for(var i = 0; i < list.length; i++) {
+        //     list[i].onclick = function() {
+        //         console.log(event.target);
+        //         event.target.parentElement.parentElement.remove();  //부모요소로 올라가서 삭제
+
+        //     }
+        // }
+
+
+        // 2번쨰 방식 - 이벤트 위임 방식
+        var table = document.querySelector(".table");
+        table.onclick = function() {
+            if (event.target.className !== "remove") return;
+            event.target.parentElement.parentElement.remove();
+        }
+
+    </script>
+</body>
+</html>

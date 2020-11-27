@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul class="parent">
+        <li class="list">라이언</li>
+        <li class="list">어피치</li>
+        <li class="list">무지</li>
+        <li class="list">프로도</li>
+        <li class="list">네오</li>
+        <li class="list">제이지</li>
+        <li class="list">콘</li>
+    </ul>
+
+    <div class="result"></div>
+
+    <script>
+        var result = document.querySelector(".result");
+        var parent = document.querySelector(".parent");
+        parent.onclick = function() {
+            // 이벤트 위임할때 부모를 클릭해도 적용되는 문제가 있음
+            // console.log(event.target);   //현재 실행되는 이벤트 대상
+            // console.log(event.currentTarget);   //실제 이벤트가 걸려있는 부모
+            // console.dir(event.target.tagName);
+
+            if(event.target.tagName !== 'LI') return;   //ul일 경우에는 동작하지 않음
+            console.log(event.target);
+            
+            result.innerHTML = event.target.innerHTML;
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        
+        table {
+            border-spacing: 0;    /* 윤곽 간격 */
+            border-collapse: collapse; 
+            text-align: center; 
+            width: 100%;
+        }
+
+        th, td {border: 1px solid black;}
+    </style>
+</head>
+<body>
+    
+    <table id="table">
+        <thead>
+            <th>번호</th>
+            <th>과정명</th>
+            <th>담당교수</th>
+            <th>관리</th>
+        </thead>
+        <tbody class="tbody">
+            <tr>
+                <td>1</td>
+                <td>강남 응용 자바</td>
+                <td>홍길동</td>
+                <td>
+                    <button type="btton" class="testInfo">기본시험정보</button>
+                    <button type="btton" class="test">시험출제</button>
+                    <button type="btton" class="restResult">시험결과</button>
+                    <button type="btton" class="testMgr">성적관리</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>종로 응용 자바</td>
+                <td>홍길동</td>
+                <td>
+                    <button type="btton" class="testInfo">기본시험정보</button>
+                    <button type="btton" class="test">시험출제</button>
+                    <button type="btton" class="restResult">시험결과</button>
+                    <button type="btton" class="testMgr">성적관리</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        var table = document.getElementById("table");
+        var tbody = table.querySelector(".tbody");
+
+        tbody.onclick = function() {
+            if(event.target.tagName !== "BUTTON") return;
+            
+            if(event.target.classList.contains("testInfo")) {
+                console.log("시험기본정보..")
+                console.log(event.target);
+            } else if(event.target.classList.contains("test")) {
+                console.log("시험출제..")
+                console.log(event.target);
+            } else if(event.target.classList.contains("restResult")) {
+                console.log("시험결과..")
+                console.log(event.target);
+            } else if(event.target.classList.contains("testMgr")) {
+                console.log("성적관리..")
+                console.log(event.target);
+            }
+        }
+
+
+    </script>
+
+
+</body>
+</html>
