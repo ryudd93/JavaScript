@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>날짜 객체 사용하기</h2>
+
+    <script>
+        // JS에서 날짜 계삭능ㄹ 편하게 하려면 밀리초 이용
+        var before = new Date(1606709839221); //예전 날짜(날짜 형식)
+        var date = new Date(); //오늘 날짜(날짜 형식)
+        
+        console.log(before);
+        console.log(date);
+
+        console.log(date.getTime());    // 시간을 밀리초로 변경
+        console.log(date.getFullYear());
+        console.log(date.getMonth() +1);    // 한달이 빠진 형태로 구해지기때문에 +1을 해줘야함
+        console.log(date.getDate());
+        console.log(date.getMinutes());
+        console.log(date.getSeconds());
+
+        // 시간차 구하기
+        // 1일에 대한 밀리초 -> 1000 * 60 * 60 * 24
+        var str;
+        var millis = 1606709839221;
+        var gap = date.getTime - 1606709839221;
+        
+        if(gap < 1000 * 60 * 60 * 24) { //1일 이하인 경우
+            if(gap < 1000 * 60 * 60) {
+                str = "방금전";
+            } else {
+                str = parseInt(gap / (1000 * 60 * 60)) + "시간 전"; //xx시간 전
+            }
+        } else {    // 1일 이상인 경우
+            var now = new Date(millis); //밀리초를 통한 날짜
+            var year = now.getFullYear();   //해당 년
+            var month = now.getMonth() + 1;
+            var day = now.getDate();
+            var hour = now.getHours();
+            var minute = now.getMinutes();
+            var second = now.getSeconds();
+
+            str = year + "년 " + month + "월 " + day + "일 " + hour + "시 " + minute + "분 " + second + "초 ";
+        }
+        console.log(str);
+    </script>
+</body>
+</html>
