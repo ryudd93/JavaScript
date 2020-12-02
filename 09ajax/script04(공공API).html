@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+    서울 데이터 포탈
+    1. API인증키 받기 - 506e57786e72797536374e5753654d
+    2. 문서를 확인하고 요청 인자값을 검토해야함
+    3. 데이터 처리량을 확인 (최대 1000건까지)
+    4. 선택적 옵션 사용
+     -->
+    
+    <select class="gu">
+        
+    </select>
+    
+
+
+    <script>
+        function getFetch(gu) {
+            fetch("http://openAPI.seoul.go.kr:8088/506e57786e72797536374e5753654d/json/PublicWiFiPlaceInfo/1/1000/" + gu)
+            .then(function(response) {
+                // console.log(response);
+                return response.json();
+            }).then(function(data) {
+                console.log(data);
+            })
+        }
+
+        // 3. 셀렉트 이벤트
+        var handleSelect = document.querySelector(".gu");
+        handleSelect.addEventListener("change", function() {
+            console.log(event.target.value);
+            // console.log(this.value); // 3개 모두 동일
+            // console.log(handleSelect.value);
+
+            getFetch(event.target.value);   //이벤트가 발생할때, 비동기 함수 호출
+        });
+
+        // 2. 구 생성 구문
+        function createGu() {
+            var guList = new Array("종로구", "중구", "용산구", "성동구", "광진구", "동대문구",
+                                    "중랑구", "성북구", "강북구", "도봉구", "노원구", "은평구",
+                                    "서대문구", "마포구", "양천구", "강서구", "구로구", "금천구",
+                                    "영등포구", "동작구", "관악구", "서초구", "강남구", "송파구",
+                                    "강동구");
+            guList.sort();
+            guList.unshift("선택");
+
+            console.log(guList);
+
+            var gu = document.querySelector(".gu");
+            for(var i = 0; i < guList.length; i++) {
+                var option = document.createElement("option");
+                option.innerHTML = guList[i];
+                gu.appendChild(option);
+            }
+        }
+
+
+
+        //1. 즉시 실행 함수
+        (function() {
+            createGu();
+            // getFetch();
+        })();
+    </script>
+</body>
+</html>
