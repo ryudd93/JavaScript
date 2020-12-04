@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\user\Desktop\class\KG_IT_Bank\JAVASCRIPT\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+365430462.index
+3921036571.index
+3639533770.index
+3951807394.index
+2523282478.index
+1411879054.index
